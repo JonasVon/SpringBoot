@@ -33,7 +33,7 @@
 
 #### 1.创建一个 Maven 工程，JDK选择1.8
 
-![1553933197835](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1553933197835.png)
+![](/images/1553933197835.png)
 
 GroupId 一般为域名逆序，ArtifactId 一般填写项目名：
 
