@@ -37,11 +37,11 @@
 
 GroupId 一般为域名逆序，ArtifactId 一般填写项目名：
 
-![1553933321255](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1553933321255.png)
+![](/images/1553933321255.png)
 
 进入到项目后 IDEA 在右下方会弹框，点击 Enable Auto-Import 自动导入：
 
-![1553933427755](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1553933427755.png)
+![](/images/1553933427755.png)
 
 #### 2. pom.xml 配置相关依赖
 
@@ -95,17 +95,17 @@ public class HelloSpringBoot {
 
 编写一个 Controller 用于处理 hello 请求，直接往页面中打印 hello world：
 
-![1553934396969](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1553934396969.png)
+![](/images/1553934396969.png)
 
 #### 5. 运行主程序类
 
 测试结果：
 
-![1553934510955](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1553934510955.png)
+![](/images/1553934510955.png)
 
 包结构如下：
 
-![1553934660621](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1553934660621.png)
+![](/images/1553934660621.png)
 
 主程序所在包一定要包含所有类所在的子包，原因在后面解析。
 
@@ -171,21 +171,21 @@ public class HelloSpringBoot {
 
 点击 `@SpringBootApplication` 注解进入源码看到：
 
-![1553936103197](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1553936103197.png)
+![](/images/1553936103197.png)
 
 `@SpringBootConfiguration` ：`Spring Boot` 的配置类，标注在一个类上，表示一个配置类（Spring Boot 将配置也抽取成一个类了）。
 
 `@EnableAutoConfiguration` ：开启自动配置功能。以前我们需要配置的东西，Spring Boot 帮我们进行了自动配置，这个注解就是告诉 Spring Boot 开启自动配置功能。
 
-![1553936439912](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1553936439912.png)
+![](/images/1553936439912.png)
 
 `@AutoConfigurationPackage` ：自动配置包。点击进入注解：
 
-![1553936529868](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1553936529868.png)
+![](/images/1553936529868.png)
 
 `@Import(AutoConfigurationPackages.Registrar.class)` ：给容器导入一个组件。emmm，那么这里导入的是什么东西呢？点击 `Registrar` 进入看看：
 
-![1553937205912](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1553937205912.png)
+![](/images/1553937205912.png)
 
 通过计算发现，导入的包名就是我们定义的主程序类所在的包！！！
 
@@ -199,6 +199,6 @@ public class HelloSpringBoot {
 
 嘿嘿，直接上图：
 
-![1553938280150](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1553938280150.png)
+![](/images/1553938280150.png)
 
 然后填写 GAV 等信息就创建成功了，通过这种方式创建的我们就不需要手动在 pom 里面引入父项目和启动器了，父项目默认继承了，而启动器在创建前可以通过图形化界面的方式勾选具体的场景，然后在 pom 中就给我们自动引入了，方便多了。
