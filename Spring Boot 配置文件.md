@@ -6,7 +6,7 @@
 
 在使用(上一篇最后提到的) `Spring Initalizr` 来创建项目时，在项目中会自动帮我们创建了一个配置文件 `application.properties` ：
 
-![1554016102390](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554016102390.png)
+![](images/1554016102390.png)
 
 
 
@@ -44,9 +44,9 @@ employee:
 
 JavaBean：
 
-![1554020214608](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554020214608.png)
+![](images/1554020214608.png)
 
-![1554020253722](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554020253722.png)
+![](images/1554020253722.png)
 
 注解 `ConfigurationPropertiese`：告诉 `Spring Boot` 将本类中的所有属性和配置文件中相关的配置进行绑定，通过 `prefix` 属性指定配置文件中具体的哪个对象。
 
@@ -70,7 +70,7 @@ public class SpringConfigApplicationTests {
 
 结果：
 
-![1554021722168](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554021722168.png)
+![](images/1554021722168.png)
 
 注意：
 
@@ -92,7 +92,7 @@ public class SpringConfigApplicationTests {
 
 `@PropertySource` 的作用是加载指定的配置文件。在 `Bean` 上加上该注解：
 
-![1554021858466](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554021858466.png)
+![](images/1554021858466.png)
 
 定义配置文件 `employee.yml` ：
 
@@ -133,7 +133,7 @@ public class BeanConfig {
 
 在测试环境中输出该 `Bean` ：
 
-![1554022808861](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554022808861.png)
+![](images/1554022808861.png)
 
 结果无误。
 
@@ -172,7 +172,7 @@ spring:
 
 运行并查看日志信息：
 
-![1554023532421](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554023532421.png)
+![](images/1554023532421.png)
 
 结果就是我们指定的8083开发环境端口。
 
