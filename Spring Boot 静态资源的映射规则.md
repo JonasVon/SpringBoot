@@ -4,32 +4,32 @@
 
 ```java
 public void addResourceHandlers(ResourceHandlerRegistry registry) {
-			if (!this.resourceProperties.isAddMappings()) {
-				logger.debug("Default resource handling disabled");
-				return;
-			}
-			Duration cachePeriod = this.resourceProperties.getCache().getPeriod();
-			CacheControl cacheControl = this.resourceProperties.getCache()
-					.getCachecontrol().toHttpCacheControl();
-    		//配置webjars资源映射规则
-			if (!registry.hasMappingForPattern("/webjars/**")) {
-				customizeResourceHandlerRegistration(registry
-						.addResourceHandler("/webjars/**")
-						.addResourceLocations("classpath:/META-INF/resources/webjars/")
-						.setCachePeriod(getSeconds(cachePeriod))
-						.setCacheControl(cacheControl));
-			}
-			String staticPathPattern = this.mvcProperties.getStaticPathPattern();
-    		// 静态文件夹映射
-			if (!registry.hasMappingForPattern(staticPathPattern)) {
-				customizeResourceHandlerRegistration(
-						registry.addResourceHandler(staticPathPattern)
-								.addResourceLocations(getResourceLocations(
-										this.resourceProperties.getStaticLocations()))
-								.setCachePeriod(getSeconds(cachePeriod))
-								.setCacheControl(cacheControl));
-			}
-		}
+	if (!this.resourceProperties.isAddMappings()) {
+		logger.debug("Default resource handling disabled");
+		return;
+	}
+	Duration cachePeriod = this.resourceProperties.getCache().getPeriod();
+	CacheControl cacheControl = this.resourceProperties.getCache()
+		.getCachecontrol().toHttpCacheControl();
+	//配置webjars资源映射规则
+	if (!registry.hasMappingForPattern("/webjars/**")) {
+		customizeResourceHandlerRegistration(registry
+			.addResourceHandler("/webjars/**")
+			.addResourceLocations("classpath:/META-INF/resources/webjars/")
+			.setCachePeriod(getSeconds(cachePeriod))
+			.setCacheControl(cacheControl));
+	}
+	String staticPathPattern = this.mvcProperties.getStaticPathPattern();
+	// 静态文件夹映射
+	if (!registry.hasMappingForPattern(staticPathPattern)) {
+		customizeResourceHandlerRegistration(
+			registry.addResourceHandler(staticPathPattern)
+				.addResourceLocations(getResourceLocations(
+						this.resourceProperties.getStaticLocations()))
+				.setCachePeriod(getSeconds(cachePeriod))
+				.setCacheControl(cacheControl));
+	}
+	}
 ```
 
 ### 1、webjars资源
