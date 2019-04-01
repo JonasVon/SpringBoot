@@ -40,33 +40,33 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
 1.在 `webjars` 官网上找到 jq 对应的依赖：
 
-![](images\1554097538107.png)
+![](images/1554097538107.png)
 
 2.将依赖添加到 `pom.xml` 中
 
 好了，已经能使用了。这里就验证一下上面提到的映射规则，在 `External Libraries` 中找到 `webjars` 依赖：
 
-![1554098346342](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554098346342.png)
+![](images/1554098346342.png)
 
 然后启动项目，直接通过浏览器访问这个资源以测试结果：
 
-![1554098671395](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554098671395.png)
+![](images/1554098671395.png)
 
 ### 2、静态资源
 
 结果认证了上面的规则是对的，`webjars` 的资源默认就是这样找的。下来再来看我们自己的静态资源：
 
-![1554099097856](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554099097856.png)
+![](images/1554099097856.png)
 
 通过这行代码找到一个变量 `statciPathPattern` ：
 
-![1554099004060](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554099004060.png)
+![](images/1554099004060.png)
 
 通过下面这行代码找到一个常量：
 
-![1554099146701](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554099146701.png)
+![](images/1554099146701.png)
 
-![1554099173798](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554099173798.png)
+![](images/1554099173798.png)
 
 由上面的两行代码，可以总结：
 
@@ -83,21 +83,21 @@ classpath:/public/
 
 对于首页（欢迎页）也有默认的配置，同样的，在 `WebMvcAutoConfiguration` 类中找到映射处理器 `welcomePageHandlerMapping` ：
 
-![1554099819578](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554099819578.png)
+![](images/1554099819578.png)
 
 进入 `getWelcomePage` 方法：
 
-![1554099907071](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554099907071.png)
+![](images\1554099907071.png)
 
 `location` 就是上面那个四个静态资源的位置，也就是说， `Spring Boot` 会在上面提到的那四个位置下找一个名为 `index.html` 的页面。下面就来验证这是说法。
 
 假如就在 `classpath:/resources/` 下面定义一个 `index.html` （随便一个h2来个welcome)，然后通过浏览器访问：
 
-![1554100187476](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554100187476.png)
+![](images/1554100187476.png)
 
-结果是对的（差点吓到了，戏真多~~）。但是这里需要注意所谓的 `classpath` 类路径：
+结果是对的（差点吓到了，戏真多~）。但是这里需要注意所谓的 `classpath` 类路径：
 
-![1554100274218](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554100274218.png)
+![](images/1554100274218.png)
 
 这个是类路径（虽然也叫 resources），上面的 `classpath:/resources/` 就会看到上图这样的结构。
 
@@ -154,7 +154,7 @@ classpath:/public/
 
 同样的，会在静态资源文件夹（就是那四个路径）下找一个名为 `favicon.ico` 的资源，在`resources` 路径下添加了自己的一个头像试试：
 
-![1554101301852](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554101301852.png)
+![](images/1554101301852.png)
 
 ### 5、总结
 
