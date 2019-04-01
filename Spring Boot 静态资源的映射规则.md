@@ -1,4 +1,4 @@
-## 三、Spring Boot 对静态资源的映射规则
+## 三、Spring Boot 静态资源的映射规则
 
 在前面已经提到过，如果我们需要 web 环境开发，只需要添加一个 web 环境的启动器即可，`Spring Boot` 就会自动给我们将这个环境所有的依赖以及常规的配置给我们配置好。针对于 web 环境，其实是由一个类 `WebMvcAutoConfiguration` 来进行配置的，在这个类中，就有静态资源的映射规则，不多说了，直接上码：
 
@@ -40,7 +40,7 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
 1.在 `webjars` 官网上找到 jq 对应的依赖：
 
-![1554097538107](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554097538107.png)
+![](images\1554097538107.png)
 
 2.将依赖添加到 `pom.xml` 中
 
