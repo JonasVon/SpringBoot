@@ -29,7 +29,7 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 				.setCachePeriod(getSeconds(cachePeriod))
 				.setCacheControl(cacheControl));
 	}
-	}
+}
 ```
 
 ### 1、webjars资源
@@ -106,50 +106,50 @@ classpath:/public/
 最后说一个小图标，在 `WebMvcConfiguration` 类中有小图标资源的处理器（一个内部类）：
 
 ```java
-		@Configuration
-		@ConditionalOnProperty(value = "spring.mvc.favicon.enabled", matchIfMissing = true) 
-		public static class FaviconConfiguration implements ResourceLoaderAware {
+@Configuration
+@ConditionalOnProperty(value = "spring.mvc.favicon.enabled", matchIfMissing = true) 
+public static class FaviconConfiguration implements ResourceLoaderAware {
 
-			private final ResourceProperties resourceProperties;
+	private final ResourceProperties resourceProperties;
 
-			private ResourceLoader resourceLoader;
+	private ResourceLoader resourceLoader;
 
-			public FaviconConfiguration(ResourceProperties resourceProperties) {
-				this.resourceProperties = resourceProperties;
-			}
+	public FaviconConfiguration(ResourceProperties resourceProperties) {
+		this.resourceProperties = resourceProperties;
+	}
 
-			@Override
-			public void setResourceLoader(ResourceLoader resourceLoader) {
-				this.resourceLoader = resourceLoader;
-			}
+	@Override
+	public void setResourceLoader(ResourceLoader resourceLoader) {
+		this.resourceLoader = resourceLoader;
+	}
 
-			@Bean
-			public SimpleUrlHandlerMapping faviconHandlerMapping() {
-				SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();
-				mapping.setOrder(Ordered.HIGHEST_PRECEDENCE + 1);
-				mapping.setUrlMap(Collections.singletonMap("**/favicon.ico",
-						faviconRequestHandler()));
-				return mapping;
-			}
+	@Bean
+	public SimpleUrlHandlerMapping faviconHandlerMapping() {
+		SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();
+		mapping.setOrder(Ordered.HIGHEST_PRECEDENCE + 1);
+		mapping.setUrlMap(Collections.singletonMap("**/favicon.ico",
+				faviconRequestHandler()));
+		return mapping;
+	}
 
-			@Bean
-			public ResourceHttpRequestHandler faviconRequestHandler() {
-				ResourceHttpRequestHandler requestHandler = new ResourceHttpRequestHandler();
-				requestHandler.setLocations(resolveFaviconLocations());
-				return requestHandler;
-			}
+	@Bean
+	public ResourceHttpRequestHandler faviconRequestHandler() {
+		ResourceHttpRequestHandler requestHandler = new ResourceHttpRequestHandler();
+		requestHandler.setLocations(resolveFaviconLocations());
+		return requestHandler;
+	}
 
-			private List<Resource> resolveFaviconLocations() {
-				String[] staticLocations = getResourceLocations(
-						this.resourceProperties.getStaticLocations());
-				List<Resource> locations = new ArrayList<>(staticLocations.length + 1);
-				Arrays.stream(staticLocations).map(this.resourceLoader::getResource)
-						.forEach(locations::add);
-				locations.add(new ClassPathResource("/"));
-				return Collections.unmodifiableList(locations);
-			}
+	private List<Resource> resolveFaviconLocations() {
+		String[] staticLocations = getResourceLocations(
+				this.resourceProperties.getStaticLocations());
+		List<Resource> locations = new ArrayList<>(staticLocations.length + 1);
+		Arrays.stream(staticLocations).map(this.resourceLoader::getResource)
+				.forEach(locations::add);
+		locations.add(new ClassPathResource("/"));
+		return Collections.unmodifiableList(locations);
+	}
 
-		}
+}
 ```
 
 同样的，会在静态资源文件夹（就是那四个路径）下找一个名为 `favicon.ico` 的资源，在`resources` 路径下添加了自己的一个头像试试：
