@@ -164,7 +164,7 @@ protected void initServletContext(ServletContext servletContext) {
 
 ​	3.在核心控制器 `DispatcherServlet` 中找到 `doDispatch` 方法，并在方法上打上断点，
 
-![1554210062700](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554210062700.png)
+![](images/1554210062700.png)
 
 然后 debug 随便发起一个请求，发会看到上面的结果：咱们自定义的视图解析器就给管理了。所以，需要自定义视图解析就直接将自定义的解析器丢进容器中。
 
