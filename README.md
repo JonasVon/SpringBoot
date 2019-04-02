@@ -567,7 +567,7 @@ classpath:/static/
 classpath:/public/
 ```
 
-## 详解 SpringMVC 的自动配置（SpringBoot 环境）
+## 四、详解 SpringMVC 的自动配置（SpringBoot 环境）
 
 ------
 
