@@ -4,7 +4,7 @@
 
 在 `Spring Boot` 中如果访问一个不存在的资源或者请求没有映射的地址，则会抛出异常并被默认的异常处理器处理，如果在浏览器端访问，则会返回一个这样的页面：
 
-![1554341101861](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554341101861.png)
+![](images/1554341101861.png)
 
 页面的内容大致包含错误产生的时间，异常类型，状态码以及异常信息。但是如果在其他客户端上访问，则会返回 `json` 数据：
 
@@ -58,7 +58,7 @@
 
 进入到 `BasicErrorController` 中：
 
-![1554343319000](C:\Users\jonas\AppData\Roaming\Typora\typora-user-images\1554343319000.png)
+![](images/1554343319000.png)
 
 发现这个类就是一个普通的请求处理器，处理 `server.error.path` 配置的请求，如果没有配置，则处理 `error.path` 请求，如果也没有，最后处理 `/error` 请求。继续往下看会发现两个 `@RequestMapping` 的方法：
 
